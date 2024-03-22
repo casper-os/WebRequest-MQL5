@@ -1,79 +1,73 @@
-# WebRequest-MQL5
+# WebRequest-MQL5 
 
-A WebRequest-MQL5 é uma biblioteca em MQL5 que oferece uma interface simples e eficaz para comunicação com servidores web utilizando o protocolo HTTP. Com esta biblioteca, os desenvolvedores podem facilmente realizar solicitações HTTP GET, POST, PUT, DELETE e outras, além de poderem enviar e receber dados de forma segura e eficiente. 
+(This is the forked repo with English translated from the original one, everything else is the same)
+WebRequest-MQL5 is an MQL5 library that offers a simple and effective interface for communication with web servers using the HTTP protocol. With this library, developers can easily perform HTTP GET, POST, PUT, DELETE, and other requests, as well as send and receive data securely and efficiently.
 
-Tornando a integração de aplicativos de negociação algorítmica com serviços web externos fácil. Com uma interface intuitiva e documentação abrangente, a WebRequest-MQL5 simplifica o processo de comunicação com servidores web, proporcionando aos desenvolvedores MQL5 uma poderosa ferramenta para acesso remoto a dados e serviços web.
+Making the integration of algorithmic trading applications with external web services easy. With an intuitive interface and comprehensive documentation, WebRequest-MQL5 simplifies the process of communicating with web servers, providing MQL5 developers with a powerful tool for remote access to data and web services.
 
-A biblioteca e compostar por uma arquitetura que permite realizar mocks de cada classe, assim tornando possivel a realização de testes unitários, sem depender de respostas dos pedidos HTTP.
+The library is composed of an architecture that allows for mocking of each class, thus making it possible to perform unit tests without depending on responses from HTTP requests.
 
-## 🔧 Funcionalidades
+## 🔧 Features
 
-- Envio de solicitações HTTP GET, POST, PUT, DELETE e outros métodos.
-- Suporte ao formato JSON para envio e recebimento de dados
-- Suporte para comunicação segura através de HTTPS.
-- Documentação completa e exemplos de uso.
+- Sending of HTTP GET, POST, PUT, DELETE requests and other methods.
+- Support for JSON format for sending and receiving data
+- Support for secure communication through HTTPS.
+- Complete documentation and usage examples.
 
-## 📖 Guia de Instalação
+## 📖 Installation Guide
 
-1. Abra a pasta de Dados do seu terminal Metatrader5
-2. Navegue até `MQL5/Includes`
-1. Clone o projeto dentro da pasta `/Includes` do seu Terminal Metatrader5
+1. Open the Data folder of your Metatrader5 terminal
+2. Navigate to `MQL5/Includes`
+3. Clone the project inside the `/Includes` folder of your Metatrader5 Terminal
 ``` shell
 git clone https://github.com/github-joao-pedro/WebRequest-MQL5.git
 ```
 
+## 👨🏻‍💻 Usage Example
 
-## 👨🏻‍💻 Exemplo de Uso
-
-Aqui está um exemplo simples de como utilizar a biblioteca para fazer uma solicitação HTTP GET para a API Binance
+Here is a simple example of how to use the library to make an HTTP GET request to the Binance API
 ``` c++
 #include <WebRequest-MQL5/Http/HttpClient.mqh>
 
 void OnStart()
   {
-   //--- Cria objetos de solicitação/pedido/resposta
+   //--- Creates request/order/response objects
    CHttpClient client;
    CHttpRequest request;
    CHttpResponse response;
 
-   //--- Define método utilizado e URL
+   //--- Defines method used and URL
    request.Request(HTTP_METHOD_GET,"https://api.binance.com/api/v3/avgPrice?symbol=BTCUSDT");
    
-   //--- Verifica se requisição foi feita com successo
+   //--- Checks if request was made successfully
    if(client.Send(request,response))
      {
-      //--- Imprime resultados
+      //--- Prints results
       Print("REQUEST  | ",request.Method().HttpMethodsDescription()," - ",request.Url().Serialize());
       Print("RESPONSE | ",response.Body().Serialize());
      }
   }
 ```
 
-
 ```
 REQUEST  | GET - https://api.binance.com:443/api/v3/avgPrice?symbol=BTCUSDT
 RESPONSE | {"mins":5,"price":"45358.93311660","closeTime":1707438768533}
 ```
 
-## 🔗 Dependências
-Este projeto depende da seguinte biblioteca:
+## 🔗 Dependencies
+This project depends on the following library:
 
-- [CJAVal](https://www.mql5.com/en/code/13663) - Serialização e Desserialização JSON (MQL nativo
+- [CJAVal](https://www.mql5.com/en/code/13663) - JSON Serialization and Deserialization (MQL native)
 
-## 📄 Documentação
-A [documentação](https://joaopedrodev.notion.site/WebRequest-MQL5-221944146357478b9a01ade899e2531b) completa das funções da biblioteca está disponível e em construção, mas já pode ser acessada.
+## 📄 Documentation
+The [documentation](https://joaopedrodev.notion.site/WebRequest-MQL5-221944146357478b9a01ade899e2531b) complete with the library's functions is available and under construction, but can already be accessed.
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-Contribuições são bem-vindas!
+Contributions are welcome!
 
-Sinta-se à vontade para abrir um problema ou enviar uma solicitação de pull request com melhorias ou correções.
+Feel free to open an issue or send a pull request with improvements or corrections.
 
-## 📝Licença
+## 📝 License
 
-A biblioteca WebRequest-MQL5 é lançada sob a licença do MIT. Consulte [LICENSE](./LICENSE) para obter detalhes.
-
-
-
-
-
+The WebRequest-MQL5 library is released under the MIT license. See [LICENSE](./LICENSE) for details.
